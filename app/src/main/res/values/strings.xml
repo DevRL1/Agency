@@ -49,5 +49,9 @@
     <string name="orders_remains">REMAINS</string>
     <string name="menu_add_order">Add order</string>
     <string name="title_create_order">New Order</string>
+    <string name="hint_client_name">Client Name</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_order_date">Order date</string>
+    <string name="order_created">Order created!</string>
 
 </resources>

@@ -8,11 +8,15 @@ import android.widget.Toast;
 import com.ruslanlyalko.agency.R;
 import com.ruslanlyalko.agency.data.models.UserItem;
 import com.ruslanlyalko.agency.presentation.base.view.BaseActivity;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterView {
+public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterView, DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.text_name) TextView mNameText;
     @BindView(R.id.text_role) TextView mRoleText;
@@ -21,6 +25,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @BindView(R.id.text_start_date) TextView mStartDateText;
     @BindView(R.id.text_password) TextView mPasswordText;
 
+    private Calendar mDate = Calendar.getInstance();
 
     public static Intent getLaunchIntent(BaseActivity launchActivity) {
         return new Intent(launchActivity, RegisterActivity.class);
@@ -29,6 +34,14 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initDate();
+    }
+
+    private void initDate() {
+        mStartDateText.setText(String.format(Locale.getDefault(), "%02d.%02d.%d",
+                mDate.get(Calendar.DAY_OF_MONTH),
+                mDate.get(Calendar.MONTH) + 1,
+                mDate.get(Calendar.YEAR)));
     }
 
     @Override
@@ -41,6 +54,21 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         return R.layout.activity_register;
     }
 
+    @OnClick(R.id.text_order_date)
+    void onDatePickerClicked() {
+        final DatePickerDialog dpd = DatePickerDialog.newInstance(this,
+                mDate.get(Calendar.YEAR),
+                mDate.get(Calendar.MONTH),
+                mDate.get(Calendar.DAY_OF_MONTH)
+        );
+        dpd.show(getFragmentManager(), "DatePickerDialog");
+    }
+
+    @Override
+    public void onDateSet(final DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
+        mDate.set(year, monthOfYear, dayOfMonth);
+        mStartDateText.setText(String.format(Locale.getDefault(), "%02d.%02d.%d", dayOfMonth, monthOfYear + 1, year));
+    }
 
     @OnClick(R.id.button_create)
     void onCreateClicked() {
@@ -58,6 +86,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         user.setRole(mRoleText.getText().toString().trim());
         user.setPhone(mPhoneText.getText().toString().trim());
         user.setEmail(mEmailText.getText().toString().trim());
+        user.setStartDate(mDate.getTime());
         getPresenter().registerUser(user, password);
     }
 

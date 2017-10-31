@@ -5,6 +5,7 @@ import com.google.firebase.auth.AuthResult;
 import com.ruslanlyalko.agency.data.listeners.OrdersListener;
 import com.ruslanlyalko.agency.data.listeners.UserListener;
 import com.ruslanlyalko.agency.data.listeners.UsersListener;
+import com.ruslanlyalko.agency.data.models.OrderItem;
 import com.ruslanlyalko.agency.data.models.UserItem;
 import com.ruslanlyalko.agency.presentation.ui.dashboard.agency.AgencyPresenter;
 
@@ -26,4 +27,6 @@ public interface AgencyRepository {
     void getCurrentUserData(UserListener listener);
 
     void getOrders(OrdersListener listener);
+
+    Task<Void> createOrder(OrderItem order);
 }

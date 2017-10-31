@@ -6,21 +6,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ruslanlyalko.agency.R;
-import com.ruslanlyalko.agency.data.models.UserItem;
+import com.ruslanlyalko.agency.common.DateUtils;
+import com.ruslanlyalko.agency.data.models.OrderItem;
 import com.ruslanlyalko.agency.presentation.base.view.BaseActivity;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class CreateOrderActivity extends BaseActivity<CreateOrderPresenter> implements CreateOrderView {
+public class CreateOrderActivity extends BaseActivity<CreateOrderPresenter> implements CreateOrderView, DatePickerDialog.OnDateSetListener {
 
-    @BindView(R.id.text_name) TextView mNameText;
-    @BindView(R.id.text_role) TextView mRoleText;
+    @BindView(R.id.text_client_name) TextView mNameText;
     @BindView(R.id.text_phone) TextView mPhoneText;
-    @BindView(R.id.text_email) TextView mEmailText;
-    @BindView(R.id.text_start_date) TextView mStartDateText;
-    @BindView(R.id.text_password) TextView mPasswordText;
+    @BindView(R.id.text_description) TextView mDescriptionText;
+    @BindView(R.id.text_order_date) TextView mOrderDateText;
 
+    private Calendar mDate = Calendar.getInstance();
 
     public static Intent getLaunchIntent(BaseActivity launchActivity) {
         return new Intent(launchActivity, CreateOrderActivity.class);
@@ -29,6 +33,14 @@ public class CreateOrderActivity extends BaseActivity<CreateOrderPresenter> impl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initDate();
+    }
+
+    private void initDate() {
+        mOrderDateText.setText(String.format(Locale.getDefault(), "%02d.%02d.%d",
+                mDate.get(Calendar.DAY_OF_MONTH),
+                mDate.get(Calendar.MONTH) + 1,
+                mDate.get(Calendar.YEAR)));
     }
 
     @Override
@@ -41,35 +53,48 @@ public class CreateOrderActivity extends BaseActivity<CreateOrderPresenter> impl
         return R.layout.activity_create_order;
     }
 
+    @OnClick(R.id.text_order_date)
+    void onDatePickerClicked() {
+        final DatePickerDialog dpd = DatePickerDialog.newInstance(this,
+                mDate.get(Calendar.YEAR),
+                mDate.get(Calendar.MONTH),
+                mDate.get(Calendar.DAY_OF_MONTH)
+        );
+        dpd.show(getFragmentManager(), "DatePickerDialog");
+    }
+
+    @Override
+    public void onDateSet(final DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
+        mDate.set(year, monthOfYear, dayOfMonth);
+        mOrderDateText.setText(String.format(Locale.getDefault(), "%02d.%02d.%d", dayOfMonth, monthOfYear + 1, year));
+    }
 
     @OnClick(R.id.button_create)
     void onCreateClicked() {
         //TODO validating !!!
         String name = mNameText.getText().toString().trim();
-        String password = mPasswordText.getText().toString().trim();
+        String phone = mPhoneText.getText().toString().trim();
+        String desc = mDescriptionText.getText().toString().trim();
 
         if (name.isEmpty()) {
             Toast.makeText(this, R.string.name_cant_be_empty, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        UserItem user = new UserItem();
-        user.setName(name);
-        user.setRole(mRoleText.getText().toString().trim());
-        user.setPhone(mPhoneText.getText().toString().trim());
-        user.setEmail(mEmailText.getText().toString().trim());
-        getPresenter().registerUser(user, password);
+        OrderItem order = new OrderItem();
+        order.setClientName(name);
+        order.setClientPhone(phone);
+        order.setDescription(desc);
+        order.setOrderDate(mDate.getTime());
+
+        getPresenter().createOrder(order);
     }
 
     @Override
-    public void userRegistered() {
-        Toast.makeText(this, R.string.user_created, Toast.LENGTH_SHORT).show();
+    public void orderCreated() {
+        Toast.makeText(this, R.string.order_created, Toast.LENGTH_SHORT).show();
         finish();
     }
 
-    @Override
-    public void wrongLoginData() {
-        Toast.makeText(this, R.string.wrong_login_data, Toast.LENGTH_SHORT).show();
 
-    }
 }

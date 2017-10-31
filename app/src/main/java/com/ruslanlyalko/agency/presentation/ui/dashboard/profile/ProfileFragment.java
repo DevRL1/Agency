@@ -60,7 +60,6 @@ public class ProfileFragment extends BackStackFragment<ProfilePresenter> impleme
             actionBar.setTitle(R.string.menu_profile);
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -98,5 +97,6 @@ public class ProfileFragment extends BackStackFragment<ProfilePresenter> impleme
             return;
         }
         mUserNameText.setText(user.getName());
+        setHasOptionsMenu(user.getIsAdmin());
     }
 }

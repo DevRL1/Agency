@@ -12,6 +12,7 @@ import com.ruslanlyalko.agency.data.models.OrderItem;
 import com.ruslanlyalko.agency.data.models.UserItem;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -100,8 +101,16 @@ public class AgencyRepositoryImpl extends BaseRepository implements AgencyReposi
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
+    }
+
+    @Override
+    public Task<Void> createOrder(OrderItem order) {
+        order.setCreatedDate(new Date());
+        order.setUpdatedDate(new Date());
+        order.setCreatedBy(getAuth().getUid());
+        order.setId(getDatabase().getReference(DefaultConfiguration.DB_ORDERS).push().getKey());
+        return getDatabase().getReference(DefaultConfiguration.DB_ORDERS).child(order.getId()).setValue(order);
     }
 }

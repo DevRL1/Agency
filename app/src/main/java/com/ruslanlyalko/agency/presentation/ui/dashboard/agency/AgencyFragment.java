@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -18,7 +19,6 @@ import com.ruslanlyalko.agency.presentation.base.view.BackStackFragment;
 import com.ruslanlyalko.agency.presentation.ui.dashboard.agency.adapter.OnItemClickListener;
 import com.ruslanlyalko.agency.presentation.ui.dashboard.agency.adapter.OrderAdapter;
 import com.ruslanlyalko.agency.presentation.ui.dashboard.agency.create.CreateOrderActivity;
-import com.ruslanlyalko.agency.presentation.ui.dashboard.profile.manage.ManageActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +64,7 @@ public class AgencyFragment extends BackStackFragment<AgencyPresenter> implement
 
     private void initRecyclerView() {
         mOrdersAdapter = new OrderAdapter(mDataSource, this);
+        mOrdersList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         mOrdersList.setItemAnimator(new DefaultItemAnimator());
         mOrdersList.setLayoutManager(new LinearLayoutManager(getContext()));
         mOrdersList.setAdapter(mOrdersAdapter);

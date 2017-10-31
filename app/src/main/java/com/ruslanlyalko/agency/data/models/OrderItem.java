@@ -15,7 +15,9 @@ public class OrderItem implements Serializable {
     private String ClientPhone;
     private String Description;
     private String AnimatorId1;
+    private String AnimatorName1;
     private String AnimatorId2;
+    private String AnimatorName2;
     private String CreatedBy;
     private int Children;
     private int Rate;
@@ -25,6 +27,22 @@ public class OrderItem implements Serializable {
     private Date OrderDate;
     private Date CreatedDate;
     private Date UpdatedDate;
+
+    public String getAnimatorName1() {
+        return AnimatorName1;
+    }
+
+    public void setAnimatorName1(String animatorName1) {
+        AnimatorName1 = animatorName1;
+    }
+
+    public String getAnimatorName2() {
+        return AnimatorName2;
+    }
+
+    public void setAnimatorName2(String animatorName2) {
+        AnimatorName2 = animatorName2;
+    }
 
     public String getId() {
         return Id;

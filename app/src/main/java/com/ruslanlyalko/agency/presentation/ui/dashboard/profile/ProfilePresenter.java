@@ -42,4 +42,5 @@ public class ProfilePresenter extends BasePresenter<ProfileView> implements User
     public void updateUsers(UserItem user) {
         getView().updateUI(user);
     }
+
 }

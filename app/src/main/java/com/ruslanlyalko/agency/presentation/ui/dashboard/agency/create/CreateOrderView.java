@@ -10,7 +10,6 @@ import com.ruslanlyalko.agency.presentation.base.view.BaseView;
 
 interface CreateOrderView extends BaseView<CreateOrderPresenter> {
 
-    void userRegistered();
+    void orderCreated();
 
-    void wrongLoginData();
 }
