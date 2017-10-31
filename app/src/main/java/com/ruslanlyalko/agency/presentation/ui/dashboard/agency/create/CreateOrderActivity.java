@@ -1,4 +1,4 @@
-package com.ruslanlyalko.agency.presentation.ui.dashboard.profile.manage.register;
+package com.ruslanlyalko.agency.presentation.ui.dashboard.agency.create;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import com.ruslanlyalko.agency.presentation.base.view.BaseActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterView {
+public class CreateOrderActivity extends BaseActivity<CreateOrderPresenter> implements CreateOrderView {
 
     @BindView(R.id.text_name) TextView mNameText;
     @BindView(R.id.text_role) TextView mRoleText;
@@ -23,7 +23,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
 
     public static Intent getLaunchIntent(BaseActivity launchActivity) {
-        return new Intent(launchActivity, RegisterActivity.class);
+        return new Intent(launchActivity, CreateOrderActivity.class);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @Override
     public int getLayoutResource() {
-        return R.layout.activity_register;
+        return R.layout.activity_create_order;
     }
 
 

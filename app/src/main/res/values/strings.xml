@@ -12,13 +12,13 @@
 
 
     <string name="menu_agency">Agency</string>
-    <string name="menu_history">History</string>
+    <string name="menu_costs">Costs</string>
     <string name="menu_profile">Profile</string>
 
     // AGENCY
     <string name="vehicle">Label</string>
 
-    // HISTORY
+    // COSTS
     <string name="no_history_data">No history data</string>
 
     // PROFILE
@@ -33,14 +33,21 @@
     <string name="hint_phone">Phone</string>
     <string name="hint_email">Email</string>
     <string name="hint_start_date">Start date</string>
-    <string name="menu_add">Add account</string>
+    <string name="menu_register">Register account</string>
     <string name="save">Save</string>
     <string name="create">Create</string>
-    <string name="title_create_account">Create account</string>
-    <string name="user_created">User Created!</string>
-    <string name="wrong_login_data">Wrong login data!</string>
+    <string name="title_create_account">Register account</string>
+    <string name="user_created">User registered!</string>
+    <string name="wrong_login_data">Wrong user data!</string>
     <string name="hint_password">Password</string>
     <string name="name_cant_be_empty">Name can\'t be empty</string>
     <string name="saved">Saved!</string>
+    <string name="done">Done</string>
+    <string name="done_hrs">DONE HRS</string>
+    <string name="orders_done">ORDERS</string>
+    <string name="hrs_done">HOURS</string>
+    <string name="orders_remains">REMAINS</string>
+    <string name="menu_add_order">Add order</string>
+    <string name="title_create_order">New Order</string>
 
 </resources>

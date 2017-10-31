@@ -2,9 +2,11 @@ package com.ruslanlyalko.agency.data;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.ruslanlyalko.agency.data.listeners.OrdersListener;
 import com.ruslanlyalko.agency.data.listeners.UserListener;
 import com.ruslanlyalko.agency.data.listeners.UsersListener;
 import com.ruslanlyalko.agency.data.models.UserItem;
+import com.ruslanlyalko.agency.presentation.ui.dashboard.agency.AgencyPresenter;
 
 /**
  * Created by Ruslan Lyalko
@@ -22,4 +24,6 @@ public interface AgencyRepository {
     void logout();
 
     void getCurrentUserData(UserListener listener);
+
+    void getOrders(OrdersListener listener);
 }

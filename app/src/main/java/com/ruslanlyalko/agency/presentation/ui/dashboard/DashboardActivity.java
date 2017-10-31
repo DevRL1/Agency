@@ -13,7 +13,7 @@ import com.ruslanlyalko.agency.presentation.base.view.BackStackActivity;
 import com.ruslanlyalko.agency.presentation.base.view.BaseActivity;
 import com.ruslanlyalko.agency.presentation.base.view.BaseFragment;
 import com.ruslanlyalko.agency.presentation.ui.dashboard.agency.AgencyFragment;
-import com.ruslanlyalko.agency.presentation.ui.dashboard.history.HistoryFragment;
+import com.ruslanlyalko.agency.presentation.ui.dashboard.costs.CostsFragment;
 import com.ruslanlyalko.agency.presentation.ui.dashboard.profile.ProfileFragment;
 
 import butterknife.BindView;
@@ -82,7 +82,7 @@ public class DashboardActivity extends BackStackActivity<DashboardPresenter>
             case R.id.menu_agency:
                 newTabId = TAB_AGENCY;
                 break;
-            case R.id.menu_history:
+            case R.id.menu_costs:
                 newTabId = TAB_HISTORY;
                 break;
             case R.id.menu_profile:
@@ -102,7 +102,7 @@ public class DashboardActivity extends BackStackActivity<DashboardPresenter>
             case TAB_AGENCY:
                 return AgencyFragment.newInstance();
             case TAB_HISTORY:
-                return HistoryFragment.newInstance();
+                return CostsFragment.newInstance();
             case TAB_PROFILE:
                 return ProfileFragment.newInstance();
             default:

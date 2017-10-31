@@ -1,7 +1,11 @@
 package com.ruslanlyalko.agency.presentation.ui.dashboard.agency;
 
+import com.ruslanlyalko.agency.data.AgencyRepository;
+import com.ruslanlyalko.agency.data.listeners.OrdersListener;
+import com.ruslanlyalko.agency.data.models.OrderItem;
 import com.ruslanlyalko.agency.presentation.base.presenter.BasePresenter;
-import com.ruslanlyalko.agency.presentation.ui.dashboard.history.HistoryView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -12,21 +16,23 @@ import javax.inject.Inject;
  */
 
 
-public class AgencyPresenter extends BasePresenter<AgencyView> {
+public class AgencyPresenter extends BasePresenter<AgencyView> implements OrdersListener {
 
+    AgencyRepository mAgencyRepository;
 
     @Inject
-    public AgencyPresenter() {
-
-    }
-
-    public void logoutClicked() {
-        getView().showConfirmLogoutDialog();
-    }
-
-    public void logout() {
-
+    AgencyPresenter(AgencyRepository agencyRepository) {
+        mAgencyRepository = agencyRepository;
     }
 
 
+    void fetchAllOrders() {
+        mAgencyRepository.getOrders(this);
+    }
+
+    @Override
+    public void updateOrders(List<OrderItem> orders) {
+        if (!isViewAttached()) return;
+        getView().updateOrders(orders);
+    }
 }

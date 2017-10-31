@@ -1,4 +1,4 @@
-package com.ruslanlyalko.agency.presentation.ui.dashboard.history;
+package com.ruslanlyalko.agency.presentation.ui.dashboard.costs;
 
 import com.ruslanlyalko.agency.presentation.base.presenter.BasePresenter;
 
@@ -11,11 +11,11 @@ import javax.inject.Inject;
  */
 
 
-public class HistoryPresenter extends BasePresenter<HistoryView> {
+public class CostsPresenter extends BasePresenter<CostsView> {
 
 
     @Inject
-    public HistoryPresenter() {
+    public CostsPresenter() {
 
     }
 

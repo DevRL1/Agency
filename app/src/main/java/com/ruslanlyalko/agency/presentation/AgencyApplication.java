@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ruslanlyalko.agency.data.DefaultConfiguration;
 import com.ruslanlyalko.agency.data.Memory;
 import com.ruslanlyalko.agency.di.component.ApplicationComponent;
 import com.ruslanlyalko.agency.di.component.DaggerApplicationComponent;
@@ -25,7 +26,7 @@ public class AgencyApplication extends Application {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
         getComponent().inject(this);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(DefaultConfiguration.PERSISTENCE_ENABLED);
         Memory.init(this, "agency");
     }
 

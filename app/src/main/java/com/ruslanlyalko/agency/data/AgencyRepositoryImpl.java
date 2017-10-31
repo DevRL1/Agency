@@ -5,8 +5,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.ruslanlyalko.agency.data.listeners.OrdersListener;
 import com.ruslanlyalko.agency.data.listeners.UserListener;
 import com.ruslanlyalko.agency.data.listeners.UsersListener;
+import com.ruslanlyalko.agency.data.models.OrderItem;
 import com.ruslanlyalko.agency.data.models.UserItem;
 
 import java.util.ArrayList;
@@ -73,6 +75,27 @@ public class AgencyRepositoryImpl extends BaseRepository implements AgencyReposi
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserItem user = dataSnapshot.getValue(UserItem.class);
                 listener.updateUsers(user);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    public void getOrders(OrdersListener listener) {
+        getDatabase().getReference(DefaultConfiguration.DB_ORDERS).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<OrderItem> orders = new ArrayList<>();
+                for (DataSnapshot orderData : dataSnapshot.getChildren()) {
+                    OrderItem item = orderData.getValue(OrderItem.class);
+                    if (item != null)
+                        orders.add(item);
+                }
+                listener.updateOrders(orders);
             }
 
             @Override

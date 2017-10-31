@@ -1,4 +1,4 @@
-package com.ruslanlyalko.agency.presentation.ui.dashboard.history;
+package com.ruslanlyalko.agency.presentation.ui.dashboard.costs;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,10 +13,10 @@ import com.ruslanlyalko.agency.presentation.base.view.BackStackFragment;
  * on 23.10.2017.
  */
 
-public class HistoryFragment extends BackStackFragment<HistoryPresenter> implements HistoryView {
+public class CostsFragment extends BackStackFragment<CostsPresenter> implements CostsView {
 
-    public static HistoryFragment newInstance() {
-        return new HistoryFragment();
+    public static CostsFragment newInstance() {
+        return new CostsFragment();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class HistoryFragment extends BackStackFragment<HistoryPresenter> impleme
     private void initActionBar() {
         final ActionBar actionBar = getBaseActivity().getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setTitle(R.string.menu_history);
+            actionBar.setTitle(R.string.menu_costs);
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
         setHasOptionsMenu(false);
