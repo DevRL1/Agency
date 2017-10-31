@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Agency</string>
+
+    <string name="alert_loading">Loading. Please wait</string>
+    <string name="error_no_internet">No internet</string>
+
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_error_empty_field">Field can\'t be empty</string>
+    <string name="login_wrong_email_password">Wrong login or password! Please try again</string>
+
+
+    <string name="menu_agency">Agency</string>
+    <string name="menu_history">History</string>
+    <string name="menu_profile">Profile</string>
+
+    // AGENCY
+    <string name="vehicle">Label</string>
+
+    // HISTORY
+    <string name="no_history_data">No history data</string>
+
+    // PROFILE
+    <string name="user_name">User Name</string>
+    <string name="logout_confirmation">Logout from your account?</string>
+    <string name="logout">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="menu_manage">Manage Accounts</string>
+    <string name="title_manage">Manage accounts</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_role">Role</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_start_date">Start date</string>
+    <string name="menu_add">Add account</string>
+    <string name="save">Save</string>
+    <string name="create">Create</string>
+    <string name="title_create_account">Create account</string>
+    <string name="user_created">User Created!</string>
+    <string name="wrong_login_data">Wrong login data!</string>
+    <string name="hint_password">Password</string>
+    <string name="name_cant_be_empty">Name can\'t be empty</string>
+    <string name="saved">Saved!</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_agency"
+        android:icon="@drawable/ic_filter_vintage_black_24dp"
+        android:title="@string/menu_agency"/>
+
+    <item
+        android:id="@+id/menu_history"
+        android:icon="@drawable/ic_history_black_24dp"
+        android:title="@string/menu_history"/>
+
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:title="@string/menu_profile"/>
+
+</menu>

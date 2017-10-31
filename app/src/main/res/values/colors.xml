@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f7f7f7</color>
+    <color name="colorPrimaryDark">#BFBFBF</color>
+    <color name="colorAccent">#2196F3</color>
+
+    <color name="colorBackground">#ececec</color>
+    <color name="colorBottomNavigation">#e6fafafa</color>
+    <color name="colorDivider">#d8d8d8</color>
+    <color name="colorText">#44000000</color>
+    <color name="colorPurpleyGray">#8f8e94</color>
+    <color name="colorInactiveButton">#123123</color>
+
+    <color name="colorBlack30">#4c000000</color>
+    <color name="colorRed">#d9091e</color>
+
+    <color name="colorStatusBlack">#4a4a4a</color>
+    <color name="colorStatusGreen">#417505</color>
+    <color name="colorStatusOrange">#eb8217</color>
+    <color name="colorHistoryItemText">#9d9d9d</color>
+
+</resources>
